@@ -7,7 +7,6 @@ import {
   createInitialState,
   applySingleQubitGate,
   applyCXGate,
-  applySwapGate,
   GATES,
   partialTraceSingleQubit,
   getQubitPhase,
@@ -196,8 +195,6 @@ export function Game({ numPlayers, numDice, isProcedural, difficulty, timerEnabl
   // ── NEW: Extra Roll flag ──
   const [extraRollPending, setExtraRollPending] = useState(false);
 
-  // ── NEW: Win stats screen ──
-  const [showStats, setShowStats] = useState(false);
 
   useEffect(() => {
     startAmbientDrone();
@@ -750,12 +747,12 @@ export function Game({ numPlayers, numDice, isProcedural, difficulty, timerEnabl
   // ── Bloch Radar Component ──
   const BlochRadar = ({
     prob0,
-    prob1,
+    _prob1,
     phase,
     color,
   }: {
     prob0: number;
-    prob1: number;
+    _prob1: number;
     phase: number;
     color: string;
   }) => {
@@ -1372,7 +1369,7 @@ export function Game({ numPlayers, numDice, isProcedural, difficulty, timerEnabl
   );
 }
 
-// ── SVG Arc Path Helper for Bloch Radar ──
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function describeArc(
   cx: number,
   cy: number,
