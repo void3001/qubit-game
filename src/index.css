@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@400;700;900&display=swap');
+
+:root {
+  /* Core Palette: Minimalist Sci-Fi */
+  --bg-deep: #050608;
+  --bg-lab: #0a0b10;
+  --bg-glass: rgba(15, 18, 26, 0.7);
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --border-light: rgba(255, 255, 255, 0.15);
+  
+  --text-main: #e0e6ed;
+  --text-muted: #8a94a6;
+  
+  /* Accent Colors (Focused) */
+  --neon-cyan: #00d1ff;
+  --neon-magenta: #ff007f;
+  --neon-green: #39ff14;
+  --neon-gold: #ffbe0b;
+  --neon-red: #ff3e3e;
+
+  --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-tech: 'Orbitron', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-ui);
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base Deep Space Background with Grain */
+#root {
+  min-height: 100vh;
+  width: 100vw;
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(0, 209, 255, 0.03) 0%, transparent 70%),
+    linear-gradient(to bottom, var(--bg-deep), var(--bg-lab));
+  position: relative;
+}
+
+/* Glass Utility Classes with sharp sci-fi corners */
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-glass);
+  border-radius: 4px; 
+  box-shadow: 0 16px 64px 0 rgba(0, 0, 0, 0.9);
+}
+
+.glow-text-cyan { color: var(--neon-cyan); text-shadow: 0 0 12px rgba(0, 209, 255, 0.4); }
+.glow-text-magenta { color: var(--neon-magenta); text-shadow: 0 0 12px rgba(255, 0, 127, 0.4); }
+
+/* Common Buttons - Clean High Contrast */
+.neon-btn {
+  font-family: var(--font-tech);
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.9rem 1.8rem;
+  border-radius: 2px;
+  cursor: pointer;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.neon-btn:hover:not(:disabled) {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.neon-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.neon-btn:disabled {
+  opacity: 0.15;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
