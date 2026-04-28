@@ -747,12 +747,10 @@ export function Game({ numPlayers, numDice, isProcedural, difficulty, timerEnabl
   // ── Bloch Radar Component ──
   const BlochRadar = ({
     prob0,
-    _prob1,
     phase,
     color,
   }: {
     prob0: number;
-    _prob1: number;
     phase: number;
     color: string;
   }) => {
@@ -1032,7 +1030,6 @@ export function Game({ numPlayers, numDice, isProcedural, difficulty, timerEnabl
             <div className="bloch-area">
               <BlochRadar
                 prob0={activeProbs[0]}
-                prob1={activeProbs[1]}
                 phase={activePhase}
                 color={pColor}
               />
@@ -1367,33 +1364,6 @@ export function Game({ numPlayers, numDice, isProcedural, difficulty, timerEnabl
       </div>
     </div>
   );
-}
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function describeArc(
-  cx: number,
-  cy: number,
-  r: number,
-  startAngle: number,
-  endAngle: number
-): string {
-  const start = polarToCartesian(cx, cy, r, endAngle);
-  const end = polarToCartesian(cx, cy, r, startAngle);
-  const largeArcFlag = Math.abs(endAngle - startAngle) > 180 ? 1 : 0;
-  return `M ${start.x} ${start.y} A ${r} ${r} 0 ${largeArcFlag} 0 ${end.x} ${end.y}`;
-}
-
-function polarToCartesian(
-  cx: number,
-  cy: number,
-  r: number,
-  angleDeg: number
-): { x: number; y: number } {
-  const angleRad = ((angleDeg - 90) * Math.PI) / 180;
-  return {
-    x: cx + r * Math.cos(angleRad),
-    y: cy + r * Math.sin(angleRad),
-  };
 }
 
 export default Game;
