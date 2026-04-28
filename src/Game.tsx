@@ -831,8 +831,9 @@ export function Game({ numPlayers, numDice, isProcedural, difficulty, timerEnabl
 
       <div className="game-container">
         {/* Game Board */}
-        <div className="glass-panel board">
-          <svg className="wormhole-svg">
+        <div className="board-wrapper">
+          <div className="glass-panel board">
+            <svg className="wormhole-svg">
             {renderWormholeLines()}
             {renderEntanglementTethers()}
           </svg>
@@ -935,6 +936,7 @@ export function Game({ numPlayers, numDice, isProcedural, difficulty, timerEnabl
               </button>
             </div>
           )}
+        </div>
         </div>
 
         {/* Dashboard */}
